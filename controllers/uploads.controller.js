@@ -18,6 +18,7 @@ const uploadImagen = (req, res) => {
   const urlCompletaBack = `${req.protocol}:// ${req.get("host")}/uploads/${
     imagen.filename
   }`;
+  console.log("urlCompletaBack", urlCompletaBack);
   res.status(201).json({
     foto: urlCompletaBack,
   });
