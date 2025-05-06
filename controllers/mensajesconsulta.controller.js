@@ -1,7 +1,7 @@
 import models from "../models/mensajesconsulta.model.js";
 const getAll = async (req, res) => {
   try {
-    const mensajesconsulta = await models.obtenerTodosLosMensajes();
+    const mensajesconsulta = await models.obtenerTodosLosMensajeConsulta();
     res.json(mensajesconsulta);
   } catch (error) {
     res
@@ -13,7 +13,7 @@ const getAll = async (req, res) => {
 const getOne = async (req, res) => {
   const id = req.params.id;
   try {
-    const mensajesconsulta = await models.obtenerUnMensaje(id);
+    const mensajesconsulta = await models.obtenerUnMensajeConsulta(id);
     res.json(mensajesconsulta);
   } catch (error) {
     res.status(500).json({ mensaje: "Algo fallo, no se pudo encontrar" });
@@ -23,7 +23,7 @@ const getOne = async (req, res) => {
 const create = async (req, res) => {
   const mensajeACrear = req.body;
   try {
-    const mensajeGuardado = await models.crearUnMensaje(mensajeACrear);
+    const mensajeGuardado = await models.crearUnMensajeConsulta(mensajeACrear);
     res.status(201).json(mensajeGuardado);
   } catch (error) {
     console.log(error);
@@ -36,7 +36,7 @@ const update = async (req, res) => {
   const mensajeAEditar = req.body;
   mensajeAEditar.id = id;
   try {
-    const mensajeEditado = await models.editarUnMensaje(mensajeAEditar);
+    const mensajeEditado = await models.editarUnMensajeConsulta(mensajeAEditar);
     res.json(mensajeEditado);
   } catch (error) {
     console.log(error);
@@ -47,7 +47,7 @@ const update = async (req, res) => {
 const remove = async (req, res) => {
   const id = req.params.id;
   try {
-    const mensajeEliminado = await models.eliminarMensaje(id);
+    const mensajeEliminado = await models.eliminarMensajeConsulta(id);
     res.json(mensajeEliminado);
   } catch (error) {
     res.status(500).json({ mensaje: "Algo fallo, no se pudo borrar" });

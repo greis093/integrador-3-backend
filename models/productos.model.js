@@ -47,6 +47,7 @@ const ProductoModelo = mongoose.model("productos", ProductoEsquema);
 const obtenerTodosLosProductos = async () => {
   try {
     const productos = await ProductoModelo.find();
+    //console.log("son productos", productos);
     return productos;
   } catch (error) {
     throw error;
@@ -66,6 +67,8 @@ const obtenerUnProducto = async (id) => {
 const crearUnProducto = async (productoNuevo) => {
   try {
     const productoAGuardar = new ProductoModelo(productoNuevo);
+    productoAGuardar.foto = productoAGuardar.foto.replace(/\s+/g, "");
+    console.log("nuevo producto", productoAGuardar);
     const productoGuardardo = await productoAGuardar.save();
     return productoGuardardo;
   } catch (error) {
@@ -88,6 +91,7 @@ const editarUnProducto = async (productoAEditar) => {
 };
 
 const eliminarProducto = async (id) => {
+  console.log("lo q elimine", id);
   try {
     const productoEliminado = await ProductoModelo.findByIdAndDelete(id);
     return productoEliminado;

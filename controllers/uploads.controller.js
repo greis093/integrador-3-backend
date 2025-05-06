@@ -1,4 +1,4 @@
-const uploadsImagen = (req, res) => {
+const uploadImagen = (req, res) => {
   const imagen = req.file;
   console.log(imagen);
 
@@ -7,10 +7,16 @@ const uploadsImagen = (req, res) => {
       mensaje: "No se cargó la imagen necesaria",
     });
   }
-  res.json({
-    foto: imagen.filename,
+  //console.log(req.protocol)// http o https
+  //console.log(req.get('host'))// localhost:8080
+  //console.log(imagen.filename)//nombre del archivo
+  const urlCompletaBack = `${req.protocol}:// ${req.get("host")}/uploads/${
+    imagen.filename
+  }`;
+  res.status(201).json({
+    foto: urlCompletaBack,
   });
 };
 export default {
-  uploadsImagen,
+  uploadImagen,
 };
