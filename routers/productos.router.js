@@ -19,5 +19,4 @@ routerProductos.put("/:id", productosController.update);
 // CRUD -> D:DELETE -> DELETE -> http://localhost:8080/api/v1/productos/id
 routerProductos.delete("/:id", productosController.remove);
 
-routerProductos.delete("/remove-file/:id", productosController.removeFile);
 export default routerProductos;
