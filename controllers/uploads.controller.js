@@ -19,7 +19,7 @@ const uploadImagen = (req, res) => {
     imagen.filename
   }`;
   console.log("urlCompletaBack", urlCompletaBack);
-  res.status(201).json({
+  return res.status(201).json({
     foto: urlCompletaBack,
   });
 };
